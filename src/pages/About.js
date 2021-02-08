@@ -1,6 +1,7 @@
 import React from "react"
 import styled from 'styled-components'
 import {Link} from "react-router-dom"
+import {Row,Col} from 'react-bootstrap'
 
 const About = () => {
 
@@ -12,10 +13,43 @@ const About = () => {
       <AboutText>
         about<SinglePeriod>.</SinglePeriod>
       </AboutText>
-      <ArrowRight to="/"/>
+      <Row>
+       <Col xs={6}>
+         <ImageBox>
+       <StyledImage />
+        </ImageBox>
+       </Col>
+       <Col xs={4}>
+         <DescText>
+          Hey, my name is Simon Johnston. I'm a Web Developer and Designer.
+          I mainly work with small bussiness and start-ups helping them solve complicated issues and design.
+          
+          <br />
+          <br />
+          Below is my current résumé
+        </DescText>
+       </Col>
+       <Col xs={2}>
+        <ArrowRight to="/"/>
+      </Col>
+   
+     </Row>
     </AboutDiv>
   )
 }
+
+
+const StyledImage = styled.div`
+  display:flex;
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.35);
+  background-image: url(${(props) => props.url});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
 
 const SinglePeriod = styled.span`
 color: white ;
@@ -31,13 +65,21 @@ background: linear-gradient(to left, #175676 0%, #175676 50%, white 50%, white 1
 ;
 
 
-const ArrowDiv = styled.div`
+const ImageBox = styled.div`
 display:flex;
 justify-content:center;
-flex-direction: column;
-background: linear-gradient(to left, #175676 0%, #175676 50%, white 50%, white 100%);
+
 `
 ;
+
+
+const DescText = styled.p`
+color:white;
+font-family: 'Roboto', sans-serif;
+margin:10%;
+`
+;
+
 
 const AboutText = styled.div`
 display: flex;

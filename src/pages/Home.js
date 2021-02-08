@@ -19,7 +19,7 @@ const Home = () => {
       <NameText>
         i'm Simon Johnston a [ 
           <TextLoop
-          interval="2000"
+          interval="1500"
           > 
             <CareerText > Web Developer </CareerText>
             <CareerText> UX Designer </CareerText>
@@ -55,7 +55,6 @@ line-height: 80%;
 letter-spacing: -10px;
 justify-content:center;
 margin-top:15%;
-
 
 `;
 
