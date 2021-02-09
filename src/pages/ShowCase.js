@@ -55,6 +55,10 @@ line-height: -1800%;
 
 
 const ArrowDown = styled(Link)`
+-moz-transition: all .5s ease-in;
+-o-transition: all .5s ease-in;
+-webkit-transition: all .5s ease-in;
+transition: all .5s ease-in;
 border: solid #4ba3c3;
 width:100px;
 height: 100px;
@@ -63,6 +67,10 @@ display: inline-block;
 padding: 3px;
 transform: rotate(45deg);
 -webkit-transform: rotate(45deg);
+&:hover {
+  border: solid #ba324f;
+  border-width: 0 20px 20px 0;
+}
 `;
 
 

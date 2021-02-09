@@ -80,6 +80,10 @@ margin-top:10%;
 
 
 const ArrowRight = styled(Link)`
+-moz-transition: all .5s ease-in;
+-o-transition: all .5s ease-in;
+-webkit-transition: all .5s ease-in;
+transition: all .5s ease-in;
 display:flex;
 align-self: flex-end;
 margin-right: 25px;
@@ -92,6 +96,10 @@ padding: 3px;
 margin-bottom: 50px;
 transform: rotate(-45deg);
 -webkit-transform: rotate(-45deg);
+&:hover {
+  border: solid #ba324f;
+  border-width: 0 20px 20px 0;
+}
 `;
 
 

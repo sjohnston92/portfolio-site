@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {Row, Col} from 'react-bootstrap'
-import {FaEnvelope}from "react-icons/fa";
+import {FaEnvelope,FaLinkedin, FaFacebook}from "react-icons/fa";
 
 
 const Contact = () => {
@@ -48,7 +48,21 @@ const Contact = () => {
       <Col>
       <ArrowLeft to="/"/>
       </Col>
-      <Col>
+      <Col xs={4}>
+      <StyledContactText>
+      If you want to reach out just fill out the this short form. 
+      You could also reach out to me on LinkedIn & Facebook
+      </StyledContactText>
+      <IconBox>
+      <a href="https://www.linkedin.com/in/simoncjohnston/">
+      <FaLinkedin/> 
+      </a>
+      <a href="https://www.facebook.com/simon.johnston.7">
+      <FaFacebook />
+      </a>
+      </IconBox>
+      </Col>
+      <Col xs={6}>
       <FormContainer>
       <StyledForm onSubmit={handleOnSubmit}>
         <div>
@@ -62,9 +76,9 @@ const Contact = () => {
         <textarea id="message" name="message"></textarea>
         </div>
         <div>
-        <button type="submit" disabled={serverState.submitting}>
+        <StyledButton  color="white" type="submit" disabled={serverState.submitting}>
           <FaEnvelope /> Submit
-        </button>
+        </StyledButton>
         </div>
         {serverState.status && (
           <p className={!serverState.status.ok ? "errorMsg" : ""}>
@@ -98,6 +112,20 @@ flex-direction:column;
 `
 ;
 
+
+
+const IconBox = styled.div`
+display:flex;
+text-align:center;
+font-size: 40px;
+justify-content:space-around;
+`
+;
+const StyledContactText = styled.p`
+margin-top: 15%;
+font-family: 'Roboto', sans-serif;
+`
+;
 const ContactText = styled.div`
 display: flex;
 font-family: 'Montserrat', sans-serif;
@@ -111,6 +139,10 @@ margin-top:10%;
 
 
 const ArrowLeft = styled(Link)`
+-moz-transition: all .5s ease-in;
+-o-transition: all .5s ease-in;
+-webkit-transition: all .5s ease-in;
+transition: all .5s ease-in;
 border: solid #f6ae2d;
 width:100px;
 height: 100px;
@@ -119,6 +151,10 @@ display: inline-block;
 padding: 3px;
 transform: rotate(135deg);
 -webkit-transform: rotate(135deg);
+&:hover {
+  border: solid #ba324f;
+  border-width: 0 20px 20px 0;
+}
 `;
 
 
@@ -127,7 +163,7 @@ const StyledForm = styled.form`
 font-family: 'Roboto', sans-serif;
 background: white;
 margin-bottom: 20px;
-margin-right: 20px;
+margin-right: 15px;
 border-radius: 10px;
 `;
 
@@ -140,5 +176,29 @@ border-radius: 10px;
 font-size: 20px;
 `;
 
+
+const StyledButton = styled.button`
+-moz-transition: all .5s ease-in;
+-o-transition: all .5s ease-in;
+-webkit-transition: all .5s ease-in;
+transition: all .5s ease-in;
+text-decoration:none;
+font-family: 'Roboto', sans-serif;
+text-align:center;
+margin-top:5px;
+padding-left: 20px;
+padding-right: 20px;
+padding-top: 10px;
+padding-bottom 10px;
+text-transform: uppercase;
+color: white;
+background: #f6ae2d;
+border: 5px solid white;
+border-radius:30px;
+letter-spacing:10px;
+&:hover {
+  color: #f6ae2d;
+  background: ${props => props.color};
+}`
 
 export default Contact;
