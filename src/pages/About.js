@@ -13,27 +13,13 @@ const About = () => {
       <AboutText>
         about<SinglePeriod>.</SinglePeriod>
       </AboutText>
-      <Row>
-       <Col xs={6}>
-         <ImageBox>
-       <StyledImage />
+        <ImageBox>
+        <StyledImage/>
         </ImageBox>
-       </Col>
-       <Col xs={4}>
-         <DescText>
-          Hey, my name is Simon Johnston. I'm a Web Developer and Designer.
-          I mainly work with small bussiness and start-ups helping them solve complicated issues and design.
-          
-          <br />
-          <br />
-          Below is my current résumé
-        </DescText>
-       </Col>
-       <Col xs={2}>
+       <div style={{display:'flex',justifyContent:'flex-end'}}>
         <ArrowRight to="/"/>
-      </Col>
-   
-     </Row>
+      </div>
+ 
     </AboutDiv>
   )
 }
@@ -58,7 +44,7 @@ color: white ;
 
 const AboutDiv = styled.div`
 display:flex;
-justify-content:center;
+justify-content:space-between;
 flex-direction: column;
 background: linear-gradient(to left, #175676 0%, #175676 50%, white 50%, white 100%);
 `
@@ -103,6 +89,7 @@ height: 100px;
 border-width: 0 20px 20px 0;
 display: inline-block;
 padding: 3px;
+margin-bottom: 50px;
 transform: rotate(-45deg);
 -webkit-transform: rotate(-45deg);
 `;

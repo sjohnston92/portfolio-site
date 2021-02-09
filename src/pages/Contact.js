@@ -1,10 +1,42 @@
-import React from "react"
+import React,{useState} from "react"
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import {Row, Col} from 'react-bootstrap'
+import {FaEnvelope}from "react-icons/fa";
+
 
 const Contact = () => {
 
-
+  const [serverState, setServerState] = useState({
+    submitting: false,
+    status: null
+  });
+  const handleServerResponse = (ok, msg, form) => {
+    setServerState({
+      submitting: false,
+      status: { ok, msg }
+    });
+    if (ok) {
+      form.reset();
+    }
+  };
+  const handleOnSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    setServerState({ submitting: true });
+    axios({
+      method: "post",
+      url: "https://formspree.io/f/mgepqqya",
+      data: new FormData(form)
+    })
+      .then(r => {
+        handleServerResponse(true, "Thanks!", form);
+      })
+      .catch(r => {
+        handleServerResponse(false, r.response.data.error, form);
+      });
+  };
 
 
   return (
@@ -12,7 +44,37 @@ const Contact = () => {
       <ContactText>
         contact<SinglePeriod>.</SinglePeriod>
       </ContactText>
+      <Row>
+      <Col>
       <ArrowLeft to="/"/>
+      </Col>
+      <Col>
+      <FormContainer>
+      <StyledForm onSubmit={handleOnSubmit}>
+        <div>
+        <StyledLabel htmlFor="email">email<span style={{color:'#f6ae2d'}}>:</span></StyledLabel>
+        <br/>
+        <input id="email" type="email" name="email" required />
+        </div>
+        <div>
+        <StyledLabel htmlFor="message">message<span style={{color:'#f6ae2d'}}>:</span></StyledLabel>
+        <br/>
+        <textarea id="message" name="message"></textarea>
+        </div>
+        <div>
+        <button type="submit" disabled={serverState.submitting}>
+          <FaEnvelope /> Submit
+        </button>
+        </div>
+        {serverState.status && (
+          <p className={!serverState.status.ok ? "errorMsg" : ""}>
+            {serverState.status.msg}
+          </p>
+        )}
+      </StyledForm>
+      </FormContainer>
+      </Col>
+      </Row>
     </ContactDiv>
   )
 }
@@ -31,16 +93,15 @@ background: linear-gradient(to left, #f6ae2d 0%, #f6ae2d 50%, white 50%, white 1
 ;
 const FormContainer = styled.div`
 display:flex;
-border-radius: 50%;
-justify-content:center;
-background: linear-gradient(to right, #f6ae2d 0%, #f6ae2d 50%, white 50%, white 100%);
+text-align:center;
+flex-direction:column;
 `
 ;
 
 const ContactText = styled.div`
 display: flex;
 font-family: 'Montserrat', sans-serif;
-margin:5%;
+margin:2.5%;
 font-size: 100px;
 line-height: 80%;
 letter-spacing: -5px;
@@ -59,5 +120,25 @@ padding: 3px;
 transform: rotate(135deg);
 -webkit-transform: rotate(135deg);
 `;
+
+
+
+const StyledForm = styled.form`
+font-family: 'Roboto', sans-serif;
+background: white;
+margin-bottom: 20px;
+margin-right: 20px;
+border-radius: 10px;
+`;
+
+
+
+const StyledLabel = styled.label`
+background: white;
+font-family: 'Montserrat', sans-serif;
+border-radius: 10px;
+font-size: 20px;
+`;
+
 
 export default Contact;

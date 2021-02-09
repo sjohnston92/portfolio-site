@@ -24,10 +24,10 @@ const Home = () => {
             <CareerText > Web Developer </CareerText>
             <CareerText> UX Designer </CareerText>
             <CareerText> Graphic Designer </CareerText>
-                </TextLoop>]
+          </TextLoop>]
       </NameText>
-      <FilterBox>
-        <Navigator />
+      <FilterBox >
+        <Navigator/>
       </FilterBox>
 
     </Lander>
@@ -54,7 +54,7 @@ font-size: 150px;
 line-height: 80%;
 letter-spacing: -10px;
 justify-content:center;
-margin-top:15%;
+margin-top:5%;
 
 `;
 
