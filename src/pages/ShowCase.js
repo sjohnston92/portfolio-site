@@ -1,6 +1,8 @@
 import React from "react"
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import {Row,Col} from 'react-bootstrap'
+import Filter from '../components/Filter'
 
 const About = () => {
 
@@ -9,10 +11,24 @@ const About = () => {
 
   return (
     <AboutDiv>
-      <ContactText>
+      <PortText>
         portfolio<SinglePeriod>.</SinglePeriod>
-      </ContactText>
-      
+      </PortText>
+      <Row>
+        <Col>
+        <h1>Project Name</h1>
+        <h2>Project Image</h2>
+        <h3>Project Desctiption</h3>
+        <h3>Project link</h3>
+        <h3>Project Repo</h3>
+        </Col>
+        <Col>
+        <Filter />
+        </Col>
+      </Row>
+      <div>
+      You can always go checkout more of my work on git hub
+      </div>
       <ArrowBox >
       <ArrowDown to="/"/>
       </ArrowBox>
@@ -30,11 +46,11 @@ const AboutDiv = styled.div`
 display:flex;
 justify-content:center;
 flex-direction: column;
-background: linear-gradient(to bottom, #4ba3c3 0%, #4ba3c3 50%, white 50%, white 100%);
+background: linear-gradient(to bottom, #4ba3c3 0%, #4ba3c3 25%, white 25%, white 100%);
 `
 ;
 
-const ContactText = styled.div`
+const PortText = styled.div`
 display: flex;
 font-family: 'Montserrat', sans-serif;
 margin:5%;
@@ -42,7 +58,7 @@ font-size: 100px;
 line-height: 80%;
 letter-spacing: -5px;
 justify-content:center;
-margin-top:10%;
+margin-top:5%;
 `;
 
 

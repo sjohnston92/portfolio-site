@@ -54,10 +54,10 @@ const Contact = () => {
       You could also reach out to me on LinkedIn & Facebook
       </StyledContactText>
       <IconBox>
-      <a href="https://www.linkedin.com/in/simoncjohnston/">
+      <a href="https://www.linkedin.com/in/simoncjohnston/" target="_blank">
       <FaLinkedin/> 
       </a>
-      <a href="https://www.facebook.com/simon.johnston.7">
+      <a href="https://www.facebook.com/simon.johnston.7" target="_blank">
       <FaFacebook />
       </a>
       </IconBox>
