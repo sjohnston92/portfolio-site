@@ -5,7 +5,6 @@ import {Container} from 'react-bootstrap'
 import Home from "./pages/Home"
 import Contact from "./pages/Contact"
 import ShowCase from "./pages/ShowCase"
-import Footer from "./components/Footer"
 import About from "./pages/About"
 
 
@@ -23,7 +22,6 @@ function App() {
           <Route exact path="/about" component={About} />
         </Switch>
     </Container>
-    <Footer/>
     </>
   );
 

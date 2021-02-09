@@ -102,6 +102,7 @@ const ContactDiv = styled.div`
 display:flex;
 justify-content:center;
 flex-direction: column;
+height:540px;
 background: linear-gradient(to left, #f6ae2d 0%, #f6ae2d 50%, white 50%, white 100%);
 `
 ;
