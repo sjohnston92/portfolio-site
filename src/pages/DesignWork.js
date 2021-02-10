@@ -7,7 +7,7 @@ import {Row,Col} from 'react-bootstrap'
 const DesignWork = ({designWork}) => {
 
   return (
-    <>
+    <div>
     <Row>
       <Col>
       {designWork.thumbnail}
@@ -16,7 +16,7 @@ const DesignWork = ({designWork}) => {
       {designWork.name}
       </Col>
     </Row>
-    </>
+    </div>
   )
 }
 

@@ -1,12 +1,66 @@
-import React from "react"
+import React,{useState} from "react"
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import {Row,Col} from 'react-bootstrap'
 import Filter from '../components/Filter'
+import ProjectDisplay from '../pages/ProjectDisplay'
+import DesignWork from '../pages/DesignWork'
+import DeveloperWork from '../pages/DeveloperWork'
 
-const About = () => {
+//image display
+import BrewDaddyProfile from '../images/BrewDaddyProfile.png'
+import GnarShare from '../images/GnarShare.png'
+import MacPage from '../images/MACHomePage.png'
+import BumskiPage from '../images/bumskis.png'
+
+//thumbnails
+import BrewDaddy from '../images/thumbnails/Brew_Daddy.jpg'
+import Bumski from '../images/thumbnails/bumskiLogo.png'
+import Mac from '../images/thumbnails/maclogo.png'
+import Gnar from '../images/thumbnails/gnars.png'
+
+const ShowCase = () => {
+
+  const [selection,setSelection] = useState({value:"empty"})
+  
+
+  const [designWorks,setDesignWorks] = useState([
+    {name:"Titan Seed Genetics",thumbnail:'',  image:"Picture I drew for them", body:"I designed the Logo for a small start up Seed Company"},
+    {name:"Little River Farm",thumbnail:"placeholder",  image:"Picture I drew for them", body:"I designed the Logo for a small small aquaponic farm "}
+    ])
+  
+  const [developerWorks, setDeveloperWorks] = useState([
+    {id: 1,name:"BrewDaddy", thumbnail:BrewDaddy, image:BrewDaddyProfile, body:"BrewDaddy is the ultimate coffee navigation app! Find coffee shops in your area and ",plink:"https://brew-daddy.herokuapp.com/", repo:"https://github.com/ZaneN8/brew-daddy"},
+    {id: 2,name:"BumSkis", thumbnail:Bumski,image:BumskiPage, body:"Braddy is a ",plink:"Site has not gone live yet", repo:"https://github.com/ZaneN8/brew-daddy"},
+    {id: 3,name:"Macendonian Arts Council",thumbnail:Mac, image:MacPage, body:"BrewDaddy is a ",plink:"Site has not gone live yet", repo:"https://github.com/ZaneN8/brew-daddy"},
+    {id: 4,name:"GnarShare",thumbnail:Gnar, image:GnarShare, body:"Fart is a ",plink:"https://gnar-share.herokuapp.com/", repo:"https://github.com/sjohnston92/GNARShare"},
+  ])
+
+  const handleClick = (info) =>{
+    setSelection(info)
+    console.log(selection)
+  }
+
+  const  renderSelection = () => {
+
+  }
 
 
+  const renderDesinWork = () =>{
+    return designWorks.map( designWork =>{
+      return(
+        <DesignWork key={designWork.id} designWork={designWork} />
+      )
+    })
+  }
+
+  const renderDeveloperWork = () =>{
+    return developerWorks.map( developerWork =>{
+      return(
+        <DeveloperWork key={developerWork.id} developer={developerWork} handleClick={handleClick}/>
+      )
+    })
+  }
 
 
   return (
@@ -16,14 +70,10 @@ const About = () => {
       </PortText>
       <Row>
         <Col>
-        <h1>Project Name</h1>
-        <h2>Project Image</h2>
-        <h3>Project Desctiption</h3>
-        <h3>Project link</h3>
-        <h3>Project Repo</h3>
+        <ProjectDisplay selection={selection}/>
         </Col>
         <Col>
-        <Filter />
+        <Filter developerWorks={developerWorks} renderDesinWork={renderDesinWork} designWorks={designWorks} renderDeveloperWork={renderDeveloperWork} setSelection={setSelection}/>
         </Col>
       </Row>
       <div>
@@ -90,4 +140,4 @@ transform: rotate(45deg);
 `;
 
 
-export default About;
+export default ShowCase;

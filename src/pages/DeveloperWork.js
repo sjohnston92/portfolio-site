@@ -3,14 +3,16 @@ import styled from 'styled-components'
 import {Row,Col} from 'react-bootstrap'
 
 
-const DeveloperWork = ({developer}) => {
+const DeveloperWork = ({developer,handleClick}) => {
+
+
 
     return (
-    <Selection>
+    <Selection onClick={()=>{handleClick(developer)}}>
       <Row>
         <Col align="center">
         <ThumbnailDiv>
-          <ThumbNail url={developer.thumbnail}/>
+          <ThumbNail src={developer.thumbnail}/>
         </ThumbnailDiv>
         </Col>
         <Col>
@@ -46,15 +48,11 @@ justify-content:center;
 margin-left:20%;
 
 `;
-const ThumbNail = styled.div`
+const ThumbNail = styled.img`
 display:flex;
 align-self:center;
 height: 30px;
 margin-top:10%;
-background-image: url(${(props) => props.url});
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
 `;
 
 

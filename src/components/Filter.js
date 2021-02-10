@@ -1,52 +1,9 @@
 import React,{useState} from "react"
 import styled from 'styled-components'
-import {Link} from "react-router-dom"
-import {Row,Col} from 'react-bootstrap'
-import DesignWork from '../pages/DesignWork'
-import DeveloperWork from '../pages/DeveloperWork'
-
-import BrewDaddy from '../images/thumbnails/Brew_Daddy.jpeg'
-import Bumski from '../images/thumbnails/bumskiLogo.png'
-import Mac from '../images/thumbnails/maclogo.png'
-import Gnar from '../images/thumbnails/gnars.png'
 
 
-const Filter = () => {
+const Filter = ({renderDesinWork,renderDeveloperWork}) => {
     const [design,setDesign] = useState(false)
-
-    const [designWorks,setDesignWorks] = useState([
-      {name:"Titan Seed Genetics",thumbnail:'',  image:"Picture I drew for them", body:"I designed the Logo for a small start up Seed Company"},
-      {name:"Little River Farm",thumbnail:"placeholder",  image:"Picture I drew for them", body:"I designed the Logo for a small small aquaponic farm "}
-      ])
-    
-    const [developerWorks, setDeveloperWorks] = useState([
-      {name:"BrewDaddy", thumbnail:BrewDaddy, image:"Picture I drew for them", body:"BrewDaddy is a ",plink:"https://brew-daddy.herokuapp.com/", repo:"https://github.com/ZaneN8/brew-daddy"},
-      {name:"BumSkis", thumbnail:Bumski,image:"Picture I drew for them", body:"BrewDaddy is a ",plink:"https://brew-daddy.herokuapp.com/", repo:"https://github.com/ZaneN8/brew-daddy"},
-      {name:"Macendonian Arts Council",thumbnail:Mac, image:"Picture I drew for them", body:"BrewDaddy is a ",plink:"https://brew-daddy.herokuapp.com/", repo:"https://github.com/ZaneN8/brew-daddy"},
-      {name:"GnarShare",thumbnail:Gnar, image:"Picture I drew for them", body:"BrewDaddy is a ",plink:"https://brew-daddy.herokuapp.com/", repo:"https://github.com/ZaneN8/brew-daddy"},
-    ])
-
-
-
-
-    const renderDesinWork = () =>{
-      return designWorks.map( designWork =>{
-        return(
-          <DesignWork key={designWork.id} designWork={designWork} />
-        )
-      })
-    }
-
-    const renderDeveloperWork = () =>{
-      return developerWorks.map( developerWork =>{
-        return(
-          <DeveloperWork key={developerWork.id} developer={developerWork} />
-        )
-      })
-    }
-
-
-
   return (
     <>
     <FilterBox>
