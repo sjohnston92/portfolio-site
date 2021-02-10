@@ -2,10 +2,11 @@ import React,{useState} from "react"
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import {Row,Col} from 'react-bootstrap'
-import Filter from '../components/Filter'
 import ProjectDisplay from '../pages/ProjectDisplay'
 import DesignWork from '../pages/DesignWork'
 import DeveloperWork from '../pages/DeveloperWork'
+import { SwitchTransition, CSSTransition } from "react-transition-group";
+
 
 //image display
 import BrewDaddyProfile from '../images/BrewDaddyProfile.png'
@@ -21,6 +22,7 @@ import Gnar from '../images/thumbnails/gnars.png'
 
 const ShowCase = () => {
 
+  const [state, setState] = useState(false);
   const [selection,setSelection] = useState({value:"empty"})
   
 
@@ -30,21 +32,17 @@ const ShowCase = () => {
     ])
   
   const [developerWorks, setDeveloperWorks] = useState([
-    {id: 1,name:"BrewDaddy", thumbnail:BrewDaddy, image:BrewDaddyProfile, body:"BrewDaddy is the ultimate coffee navigation app! Find coffee shops in your area and ",plink:"https://brew-daddy.herokuapp.com/", repo:"https://github.com/ZaneN8/brew-daddy"},
-    {id: 2,name:"BumSkis", thumbnail:Bumski,image:BumskiPage, body:"Braddy is a ",plink:"Site has not gone live yet", repo:"https://github.com/ZaneN8/brew-daddy"},
-    {id: 3,name:"Macendonian Arts Council",thumbnail:Mac, image:MacPage, body:"BrewDaddy is a ",plink:"Site has not gone live yet", repo:"https://github.com/ZaneN8/brew-daddy"},
-    {id: 4,name:"GnarShare",thumbnail:Gnar, image:GnarShare, body:"Fart is a ",plink:"https://gnar-share.herokuapp.com/", repo:"https://github.com/sjohnston92/GNARShare"},
+    {id: 1,name:"BrewDaddy", thumbnail:BrewDaddy, image:BrewDaddyProfile, body:"BrewDaddy is the coffee navigation application to help find perfect balance of a good cup of coffee and great work/study enviroment",plink:"https://brew-daddy.herokuapp.com/", repo:"https://github.com/ZaneN8/brew-daddy"},
+    {id: 2,name:"BumSkis", thumbnail:Bumski,image:BumskiPage, body:"Bumskis is an application where you can rent, buy, and sell your winter gear and find it all at your next ski vacation",plink:"", repo:"https://github.com/ZaneN8/brew-daddy"},
+    {id: 3,name:"Macendonian Arts Council",thumbnail:Mac, image:MacPage, body:"Macendonian Arts Council is a non-profit dedicated to the promotion and affirmation of Macedonian culture",plink:"", repo:"https://github.com/ZaneN8/brew-daddy"},
+    {id: 4,name:"GnarShare",thumbnail:Gnar, image:GnarShare, body:"GnarShare is a ski- ride share application built to help decongetion in the wasatch canyons. This application won 1st in a hackathon and built in less then 6 hours ",plink:"https://gnar-share.herokuapp.com/", repo:"https://github.com/sjohnston92/GNARShare"},
   ])
 
   const handleClick = (info) =>{
     setSelection(info)
+    setState(!state)
     console.log(selection)
   }
-
-  const  renderSelection = () => {
-
-  }
-
 
   const renderDesinWork = () =>{
     return designWorks.map( designWork =>{
@@ -70,15 +68,29 @@ const ShowCase = () => {
       </PortText>
       <Row>
         <Col>
+        <SwitchTransition>
+        <CSSTransition
+          key={state ? "Goodbye, world!" : "Hello, world!"}
+          addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
+          classNames='fade'
+          >
+        { selection.value == 'empty' ?
+        <PlacerText>
+        Click on a project to view here
+        </PlacerText>
+        :
         <ProjectDisplay selection={selection}/>
+          } 
+           </CSSTransition>
+          </SwitchTransition>
         </Col>
         <Col>
-        <Filter developerWorks={developerWorks} renderDesinWork={renderDesinWork} designWorks={designWorks} renderDeveloperWork={renderDeveloperWork} setSelection={setSelection}/>
+        <ProjectText>project listings </ProjectText>
+        <div>
+            {renderDeveloperWork()}
+        </div>
         </Col>
       </Row>
-      <div>
-      You can always go checkout more of my work on git hub
-      </div>
       <ArrowBox >
       <ArrowDown to="/"/>
       </ArrowBox>
@@ -97,6 +109,29 @@ display:flex;
 justify-content:center;
 flex-direction: column;
 background: linear-gradient(to bottom, #4ba3c3 0%, #4ba3c3 25%, white 25%, white 100%);
+`
+;
+
+
+const PlacerText= styled.div`
+display:flex;
+justify-content:center;
+flex-direction: column;
+text-align:center;
+font-family: 'Montserrat', sans-serif;
+font-size: 50px;
+margin-top: 10%;
+`
+;
+
+
+const ProjectText= styled.div`
+display:flex;
+justify-content:center;
+flex-direction: column;
+text-align:center;
+font-family: 'Montserrat', sans-serif;
+font-size: 50px;
 `
 ;
 

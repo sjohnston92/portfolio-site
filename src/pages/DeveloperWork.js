@@ -35,7 +35,6 @@ align-self:center
 margin:5%;
 padding-top:8%;
 text-align:center;
-margin-right:10%;
 `;
 
 const ThumbnailDiv = styled.div`
@@ -45,7 +44,7 @@ align-self:center
 display:flex
 text-align:center;
 justify-content:center;
-margin-left:20%;
+
 
 `;
 const ThumbNail = styled.img`

@@ -1,16 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
+import {FaGithub} from "react-icons/fa";
 
 
 const ProjectDisplay = ({selection}) =>{
 return(
-  <DisplayWindow>
-    <h1>{selection.name}</h1>
-    <ImageDisplay src={selection.image}/>
-    <h5>{selection.body}</h5>
-    <h6>{selection.plink}</h6>
-    <h6>{selection.repo}</h6>
+  <>
+    <DisplayWindow>
+      <h2>{selection.name}</h2>
+      <ImageDisplay src={selection.image}/>
+      <p>{selection.body}</p>
+      {selection.plink == "" ?
+          <p>This site has not gone live yet</p>
+          :
+         <a href={selection.plink}target="_blank">Live site for {selection.name}</a>
+        }
+    <a href={selection.repo} target="_blank"><FaGithub/> GitHub reposistory for {selection.name}</a>
 </DisplayWindow>
+</>
 )
 }
 
