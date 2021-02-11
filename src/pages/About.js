@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Link} from "react-router-dom"
 import {Row,Col} from 'react-bootstrap'
 import Simon from '../images/simon.jpeg'
+import {SiRuby,SiReact,SiPostgresql,SiJavascript,SiBootstrap,SiRails,SiHtml5,SiCss3} from "react-icons/si";
 
 const About = () => {
 
@@ -20,15 +21,23 @@ const About = () => {
         <StyledImage url={Simon}/>
         </ImageBox>
         </Col>
-        <Col>
+       
+
         <Col>
         <DescText>
+          <SubHeaderText>bio</SubHeaderText>
+          Hey my name is Simon Johnston. I'm a passionate full stack developer who's expierance is in lifting indivuals and small businesses up to achieve there goals through web and mobile development.
+          <br />
+          <SubHeaderText>skills</SubHeaderText>
+          <IconBox>
+          <SiJavascript/><SiReact/><SiRuby/><SiRails/><SiPostgresql/><SiHtml5/><SiCss3/> <SiBootstrap/>
+          </IconBox>
         </DescText>
         </Col>
        <div style={{display:'flex',justifyContent:'flex-end'}}>
         <ArrowRight to="/"/>
       </div>
-      </Col>
+
       </Row>
  
     </AboutDiv>
@@ -69,9 +78,26 @@ justify-content:center;
 `
 ;
 
+const IconBox = styled.div`
+display:flex;
+justify-content:space-around;
+font-size: 30px;
+
+`
+;
+
+const SubHeaderText = styled.h3`
+text-align:center;
+font-family: 'Montserrat', sans-serif;
+`
+
 
 const DescText = styled.p`
-color:white;
+color:#175676;
+background: white;
+padding: 20px;
+border:  #175676 solid 10px;
+border-radius: 15px;
 font-family: 'Roboto', sans-serif;
 `
 ;
