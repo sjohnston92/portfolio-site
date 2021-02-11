@@ -11,7 +11,7 @@ return(
       <ImageDisplay src={selection.image}/>
       <p>{selection.body}</p>
       {selection.plink == "" ?
-          <p>This site has not gone live yet</p>
+          "This site has not gone live yet"
           :
          <a href={selection.plink}target="_blank">Live site for {selection.name}</a>
         }

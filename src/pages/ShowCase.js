@@ -176,7 +176,7 @@ const PortText = styled.div`
 display: flex;
 font-family: 'Montserrat', sans-serif;
 margin:5%;
-font-size: 100px;
+font-size: 5em;
 line-height: 80%;
 letter-spacing: -5px;
 justify-content:center;

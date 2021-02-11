@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {Link} from "react-router-dom"
 import styled,{keyframes} from 'styled-components'
+import {Row,Col} from "react-bootstrap"
 
 
 
@@ -10,22 +11,31 @@ const Navigator = () => {
 
 return(
 <>
-  <LinkBox style={{textDecoration:"none"}}>
+  <Row style={{justifyContent:'center'}}>
+    <Col>
+    <div style={{justifyContent:'center', display:'flex'}}>
     <Link to="/about">
     <StyledButton color="#175676">About</StyledButton>
     </Link>
-  </LinkBox>
-  <LinkBox>
+    </div>
+    </Col>
+    <Col>
+    <div style={{justifyContent:'center', display:'flex'}}>
   <Link to="/showcase">
     <StyledButton color="#4ba3c3">Portfolio</StyledButton>
   </Link>
-  </LinkBox>
-  <LinkBox>
+  </div>
+  </Col>
+
+  <Col>
+  <div style={{justifyContent:'center', display:'flex'}}>
   <Link to="/contact">
    <StyledButton color="#f6ae2d">Contact</StyledButton>
   
   </Link>
-  </LinkBox>
+  </div>
+  </Col>
+  </Row>
 </>
   )
 
@@ -55,6 +65,8 @@ background: #ba324f;
 border: 5px solid white;
 border-radius:30px;
 letter-spacing:10px;
+top: 50%;
+  left: 50%;
 &:hover {
   background: ${props => props.color};;
 }
