@@ -5,6 +5,7 @@ import {Row,Col} from 'react-bootstrap'
 import ProjectDisplay from '../pages/ProjectDisplay'
 import DesignWork from '../pages/DesignWork'
 import DeveloperWork from '../pages/DeveloperWork'
+import {FaGithub} from "react-icons/fa";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 
 
@@ -13,6 +14,7 @@ import BrewDaddyProfile from '../images/BrewDaddyProfile.png'
 import GnarShare from '../images/GnarShare.png'
 import MacPage from '../images/MACHomePage.png'
 import BumskiPage from '../images/bumskis.png'
+import ProjectDis from '../images/projectdisplay.png'
 
 //thumbnails
 import BrewDaddy from '../images/thumbnails/Brew_Daddy.jpg'
@@ -52,6 +54,12 @@ const ShowCase = () => {
     })
   }
 
+
+  const backgroundChanger = () => {
+   return selection.value == 'empty' ? "": {color:'red'}
+     
+  }
+
   const renderDeveloperWork = () =>{
     return developerWorks.map( developerWork =>{
       return(
@@ -70,13 +78,15 @@ const ShowCase = () => {
         <Col>
         <SwitchTransition>
         <CSSTransition
-          key={state ? "Goodbye, world!" : "Hello, world!"}
+          key={state}
           addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
           classNames='fade'
           >
         { selection.value == 'empty' ?
-        <PlacerText>
-        Click on a project to view here
+        <PlacerText url={ProjectDis}>
+          project
+          <br />
+          viewer
         </PlacerText>
         :
         <ProjectDisplay selection={selection}/>
@@ -85,10 +95,17 @@ const ShowCase = () => {
           </SwitchTransition>
         </Col>
         <Col>
-        <ProjectText>project listings </ProjectText>
+        <ProjectText>contributed projects </ProjectText>
         <div>
             {renderDeveloperWork()}
         </div>
+        <Row >
+          <Col>
+          <GitText>
+          <a href="https://github.com/sjohnston92?tab=overview&from=2021-02-01&to=2021-02-10" ><p>Checkout more on my GitHub<FaGithub style={{marginBottom:'5px'}}/></p></a>
+          </GitText>
+          </Col>
+          </Row>
         </Col>
       </Row>
       <ArrowBox >
@@ -115,23 +132,43 @@ background: linear-gradient(to bottom, #4ba3c3 0%, #4ba3c3 25%, white 25%, white
 
 const PlacerText= styled.div`
 display:flex;
+align-self:center;
 justify-content:center;
 flex-direction: column;
 text-align:center;
 font-family: 'Montserrat', sans-serif;
 font-size: 50px;
-margin-top: 10%;
+margin-top: 25%;
+background-image: url(${(props) => props.url});
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center;
 `
 ;
 
 
 const ProjectText= styled.div`
 display:flex;
+color: #4ba3c3 ;
 justify-content:center;
 flex-direction: column;
 text-align:center;
 font-family: 'Montserrat', sans-serif;
-font-size: 50px;
+font-size: 30px;
+text-decoration: underline;
+
+`
+;
+
+
+const GitText= styled.div`
+display:flex;
+justify-content:center;
+flex-direction: column;
+text-align:center;
+font-family: 'Roboto', sans-serif;
+font-size: 15px;
+margin:5%;
 `
 ;
 

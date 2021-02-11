@@ -45,10 +45,10 @@ const Contact = () => {
         contact<SinglePeriod>.</SinglePeriod>
       </ContactText>
       <Row>
-      <Col>
+      <Col xs={{order:3}} md={{order:1}}>
       <ArrowLeft to="/"/>
       </Col>
-      <Col xs={4}>
+      <Col xs={{order:1}} >
       <StyledContactText>
       If you want to reach out just fill out the this short form. 
       You could also reach out to me on LinkedIn & Facebook
@@ -62,7 +62,7 @@ const Contact = () => {
       </a>
       </IconBox>
       </Col>
-      <Col xs={6}>
+      <Col xs={{order:2}} >
       <FormContainer>
       <StyledForm onSubmit={handleOnSubmit}>
         <div>

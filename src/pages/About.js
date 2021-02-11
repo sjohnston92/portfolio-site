@@ -2,6 +2,7 @@ import React from "react"
 import styled from 'styled-components'
 import {Link} from "react-router-dom"
 import {Row,Col} from 'react-bootstrap'
+import Simon from '../images/simon.jpeg'
 
 const About = () => {
 
@@ -13,12 +14,22 @@ const About = () => {
       <AboutText>
         about<SinglePeriod>.</SinglePeriod>
       </AboutText>
+      <Row>
+        <Col>
         <ImageBox>
-        <StyledImage/>
+        <StyledImage url={Simon}/>
         </ImageBox>
+        </Col>
+        <Col>
+        <Col>
+        <DescText>
+        </DescText>
+        </Col>
        <div style={{display:'flex',justifyContent:'flex-end'}}>
         <ArrowRight to="/"/>
       </div>
+      </Col>
+      </Row>
  
     </AboutDiv>
   )
@@ -62,7 +73,6 @@ justify-content:center;
 const DescText = styled.p`
 color:white;
 font-family: 'Roboto', sans-serif;
-margin:10%;
 `
 ;
 
