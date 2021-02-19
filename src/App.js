@@ -8,10 +8,7 @@ import ShowCase from "./pages/ShowCase"
 import About from "./pages/About"
 
 
-
-
 function App() {
-
   return (
     <>
     <Container>
