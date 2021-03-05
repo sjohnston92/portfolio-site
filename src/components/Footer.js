@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {FaGithub, FaLinkedin, FaFacebook} from "react-icons/fa";
+import {Link} from 'react-router-dom'
 
 
 const Footer = () => (
@@ -9,9 +10,15 @@ const Footer = () => (
   <SocialBox>
    CONNECT WITH ME
     <IconBox>
-      <FaGithub style={{margin:'10px'}}/>  
-      <FaLinkedin style={{margin:'10px'}}/>
+      <StyledLink to="">
+        <FaGithub style={{margin:'10px'}}/>  
+      </StyledLink>
+      <StyledLink href="https://www.linkedin.com/in/simoncjohnston/" target="_blank">
+        <FaLinkedin style={{margin:'10px'}}/>
+      </StyledLink>
+      <StyledLink>
       <FaFacebook style={{margin:'10px'}}/>
+      </StyledLink>
     </IconBox>
   </SocialBox>
 </Wrapper>
@@ -36,5 +43,12 @@ margin-right:.25%;
 letter-spacing: 100px;
 align-content: space-between;
 `;
+
+const StyledLink = styled.a`
+color:black;
+&:hover {
+  color: grey;
+
+`
 
 export default Footer;
