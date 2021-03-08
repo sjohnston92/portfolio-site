@@ -10,13 +10,13 @@ const Footer = () => (
   <SocialBox>
    CONNECT WITH ME
     <IconBox>
-      <StyledLink href="https://github.com/sjohnston92">
+      <StyledLink href="https://github.com/sjohnston92" target="_blank">
         <FaGithub style={{margin:'10px'}}/>  
       </StyledLink>
       <StyledLink href="https://www.linkedin.com/in/simoncjohnston/" target="_blank">
         <FaLinkedin style={{margin:'10px'}}/>
       </StyledLink>
-      <StyledLink href="https://www.facebook.com/simon.johnston.7">
+      <StyledLink href="https://www.facebook.com/simon.johnston.7" target="_blank">
       <FaFacebook style={{margin:'10px'}}/>
       </StyledLink>
     </IconBox>
